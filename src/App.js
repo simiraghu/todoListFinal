@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import { Routes, Route } from 'react-router-dom'
+import Signin from './components/Signin';
+import Signup from './components/Signup';
+import User_todos from './components/User_todos';
+import Home from './components/Home';
+import Create_todos from './components/Create_todos';
+import Update_todo from './components/Update_todo'
+import Footer from './components/Footer'
+import Error from './components/Error'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path='/signin' element={<Signin />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/create_todos' element={<Create_todos />} />
+        <Route path='/your_todos' element={<User_todos />} />
+        <Route path='/update_todo/:id' element={<Update_todo />} />
+        <Route path='*' element={<Error />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
